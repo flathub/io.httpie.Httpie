@@ -34,6 +34,43 @@
   </screenshots>
 
   <releases>
+    <release version="2024.1.2" date="2024-01-06">
+      <description>
+        <p>🪲 Fixed a bug introduced in 2024.1.1 that led to Control-W on Linux and Windows unintentionally closing the app window instead of just the current tab.</p>
+      </description>
+    </release>
+  </releases>
+
+  <releases>
+    <release version="2024.1.1" date="2024-01-03">
+      <description>
+        <p>✨ Enhancements</p>
+        <ul>
+          <li>📙 New documentation site — quickly access it via the Help menu (httpie.io/docs/desktop)</li>
+          <li>♻️ New sync protocol — groundwork for upcoming multiplayer mode</li>
+          <li>🚜 Selective field merging — changes are now applied on the field level, not doc level</li>
+          <li>✌️ Conflict resolution — auto-merging of changes made across clients (same-field conflicts stay last-write-wins for now)</li>
+          <li>🚀 Much faster initial sync — up to 20 times fewer requests</li>
+          <li>💁‍♀️ Startup feedback — understand what the app is doing during longer operation</li>
+          <li>🛫 Ctrl+R to send request — don’t fight your muscle memory (desktop-only)</li>
+        </ul>
+        <p>🪲 Bug fixes</p>
+        <ul>
+          <li>Fixed search and filter keyboard shortcuts (Ctrl+F and Shift+Ctrl+F) to always focus the input field</li>
+          <li>Fixed cursor jumping in search, replace, and filter fields when typing from start/middle</li>
+          <li>Fixed search from selection</li>
+          <li>Fixed missing params in cURL and HTTPie export</li>
+          <li>Fixed Bearer auth token sent as param instead of header under some circumstances</li>
+          <li>Fixed inheriting API key from collection and passing as param</li>
+          <li>Fixed handling of unnamed headers to be treated as disabled instead of invalid</li>
+          <li>Fixed validation of URLs containing variables</li>
+          <li>Fixed repeat invocations of the “Check again” button inside the “Update HTTPie” dialog</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+  <releases>
     <release version="2023.3.6" date="2023-10-08">
       <description>
         <ul>
