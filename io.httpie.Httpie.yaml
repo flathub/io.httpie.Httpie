@@ -45,6 +45,13 @@ modules:
         sha256: 38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3
         filename: httpie.appimage
         size: 103669249
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/httpie/desktop/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | .[1:]
+          timestamp-query: .published_at
+          url-query: .assets[] | select(.name=="HTTPie-" + $version + "-arm64.AppImage") | .browser_download_url
 
       # apply_extra runs at the end of the installation process and extracts
       # the app from the appimage file
