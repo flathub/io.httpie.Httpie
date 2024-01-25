@@ -9,7 +9,7 @@
   
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LicenseRef-proprietary</project_license>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   
   <description>
     <p>
@@ -34,6 +34,7 @@
   </screenshots>
 
   <releases>
+    <release version="2024.1.2" date="2024-01-06"/>
     <release version="2024.1.2" date="2024-01-06">
       <description>
         <p>🪲 Fixed a bug introduced in 2024.1.1 that led to Control-W on Linux and Windows unintentionally closing the app window instead of just the current tab.</p>
