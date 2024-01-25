@@ -41,10 +41,17 @@ modules:
           - zypak-wrapper.sh /app/extra/httpie/httpie --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations "$@"
 
       - type: extra-data
-        url: https://github.com/httpie/desktop/releases/download/v2023.3.6/HTTPie-2023.3.6.AppImage
-        sha256: 0070f765b5737cc42d6294d6dc5bba232a38d7ff01e0729915f35459a6cb08e3
+        url: https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2.AppImage
+        sha256: 38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3
         filename: httpie.appimage
-        size: 103644110
+        size: 103669249
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/httpie/desktop/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | .[1:]
+          timestamp-query: .published_at
+          url-query: .assets[] | select(.name=="HTTPie-" + $version + "-arm64.AppImage") | .browser_download_url
 
       # apply_extra runs at the end of the installation process and extracts
       # the app from the appimage file
