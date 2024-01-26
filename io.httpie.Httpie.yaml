@@ -45,6 +45,21 @@ modules:
         sha256: 38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3
         filename: httpie.appimage
         size: 103669249
+        only-arches: [x86_64]
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/httpie/desktop/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | .[1:]
+          timestamp-query: .published_at
+          url-query: .assets[] | select(.name=="HTTPie-" + $version + ".AppImage") | .browser_download_url
+
+      - type: extra-data
+        url: https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2-arm64.AppImage
+        sha256: 4612322da90290c51c5efbb4b2097932d5786175e4aaa1f55144bb6e9b54cf0c
+        filename: httpie.appimage
+        size: 104548570
+        only-arches: [aarch64]
         x-checker-data:
           type: json
           url: https://api.github.com/repos/httpie/desktop/releases/latest
