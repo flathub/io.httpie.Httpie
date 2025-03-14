@@ -38,13 +38,14 @@ modules:
       - type: script
         dest-filename: httpie
         commands:
-          - zypak-wrapper.sh /app/extra/httpie/httpie --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations "$@"
+          - zypak-wrapper.sh /app/extra/httpie/httpie --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations
+            "$@"
 
       - type: extra-data
-        url: https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2.AppImage
-        sha256: 38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3
+        url: https://github.com/httpie/desktop/releases/download/v2025.2.0/HTTPie-2025.2.0.AppImage
+        sha256: a850e215741b60087079086061f656fe550cb66c34f6da93f6dfc63c946d654f
         filename: httpie.appimage
-        size: 103669249
+        size: 103656841
         only-arches: [x86_64]
         x-checker-data:
           type: json
@@ -52,13 +53,14 @@ modules:
           tag-query: .tag_name
           version-query: $tag | .[1:]
           timestamp-query: .published_at
-          url-query: .assets[] | select(.name=="HTTPie-" + $version + ".AppImage") | .browser_download_url
+          url-query: .assets[] | select(.name=="HTTPie-" + $version + ".AppImage")
+            | .browser_download_url
 
       - type: extra-data
-        url: https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2-arm64.AppImage
-        sha256: 4612322da90290c51c5efbb4b2097932d5786175e4aaa1f55144bb6e9b54cf0c
+        url: https://github.com/httpie/desktop/releases/download/v2025.2.0/HTTPie-2025.2.0-arm64.AppImage
+        sha256: 141ce3958c200942e08da2543c02e5aaa463edf64ca6cee1c9bb799b9124780a
         filename: httpie.appimage
-        size: 104548570
+        size: 104536144
         only-arches: [aarch64]
         x-checker-data:
           type: json
@@ -66,7 +68,8 @@ modules:
           tag-query: .tag_name
           version-query: $tag | .[1:]
           timestamp-query: .published_at
-          url-query: .assets[] | select(.name=="HTTPie-" + $version + "-arm64.AppImage") | .browser_download_url
+          url-query: .assets[] | select(.name=="HTTPie-" + $version + "-arm64.AppImage")
+            | .browser_download_url
 
       # apply_extra runs at the end of the installation process and extracts
       # the app from the appimage file
