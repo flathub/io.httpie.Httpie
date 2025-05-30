@@ -4,12 +4,21 @@
   
   <name>HTTPie</name>
   <summary>Cross-platform API testing client for humans</summary>
-  <developer_name>HTTPie</developer_name>
+  <developer id="io.httpie">
+    <name>HTTPie</name>
+  </developer>
+
   <url type="homepage">https://httpie.io/desktop</url>
+  <url type="bugtracker">https://github.com/httpie/desktop/issues</url>
   
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>LicenseRef-proprietary</project_license>
-  <content_rating type="oars-1.1" />
+  <project_license>LicenseRef-proprietary=https://httpie.io/terms</project_license>
+  <content_rating type="oars-1.1"/>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#73dc8c</color>
+    <color type="primary" scheme_preference="dark">#1c1818</color>
+  </branding>
   
   <description>
     <p>
@@ -29,11 +38,58 @@
   <launchable type="desktop-id">io.httpie.Httpie.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/httpie/desktop/v2023.3.6/.github/httpie-desktop.png</image>
+      <image>https://raw.githubusercontent.com/httpie/desktop/v2025.2.0/.github/httpie-desktop.png</image>
     </screenshot>
   </screenshots>
 
   <releases>
+    <release version="2025.2.0" date="2025-03-14">
+      <description>
+        <p>✨ Enhancements</p>
+        <ul>
+          <li>📤 Export/Import — Backup, share, or publish your data as JSON.</li>
+          <li>🗂️ Export a whole space — Transfer entire workspaces with all content.</li>
+          <li>🔒 Export private items — Include drafts and local environments in exports.</li>
+          <li>📂 Collection export — Share and back up request collections.</li>
+          <li>🛫 Request export — Export with optional auth and variable embedding.</li>
+          <li>🌍 Environment export — Share variables across teams and projects.</li>
+          <li>📋 Clipboard export/import — Quick sharing without saving files.</li>
+          <li>🔍 Export customization — Selectively include only what you need.</li>
+          <li>📥 Import options — Choose between creating or updating spaces.</li>
+          <li>🛠️ Export JSON format — Schema and TypeScript type support.</li>
+          <li>📋 Copy as — Instantly generate CLI commands from requests.</li>
+          <li>🔗 Path parameters — Parametrize URLs with /:param syntax.</li>
+          <li>✨ Other enhancements — Fixed Postman import, etc.</li>
+        </ul>
+      </description>
+    </release>
+
+    <release version="2025.1.0" date="2025-01-18">
+      <description>
+        <p>✨ Enhancements</p>
+        <ul>
+          <li>💇‍♀️ UI refresh — A cleaner and more focused UI.</li>
+          <li>⚡ Variable autocomplete — Searchable autocomplete for variables.</li>
+          <li>🎛️ Interactive references — Interact with variables as tokens.</li>
+          <li>🗃 Variables context menu — All the actions in one place.</li>
+          <li>🧩 Refactor variables — Rename variables across all usages.</li>
+          <li>🎯 Go to definition — Quickly navigate to variable definitions.</li>
+          <li>🏷️ Quick-define variables — Define variables on the fly during usage.</li>
+          <li>⛓️‍💥 Inline values — Replace variable references with their values.</li>
+          <li>🎭 Peek at values — Securely reveal masked variable values.</li>
+          <li>📋 Copy references — Copy variable references easily.</li>
+          <li>💤 Case-sensitivity — Support any variable naming style.</li>
+          <li>🏃 Escape variables — Escape variables for use as strings.</li>
+        </ul>
+        <p>🪲 Bug fixes</p>
+        <ul>
+          <li>Fixed importing of individual Postman collections.</li>
+          <li>Fixed false positives when detecting AI-prompt mode in the URL field.</li>
+          <li>Various other minor fixes.</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="2024.1.2" date="2024-01-06">
       <description>
         <p>🪲 Fixed a bug introduced in 2024.1.1 that led to Control-W on Linux and Windows unintentionally closing the app window instead of just the current tab.</p>
