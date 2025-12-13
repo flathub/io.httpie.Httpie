@@ -2,7 +2,7 @@
 
 # Extract the appimage
 chmod +x httpie.appimage
-unappimage httpie.appimage >/dev/null
+./httpie.appimage --appimage-extract
 
 # Move all the data to /app/extra/httpie
 mv squashfs-root httpie
