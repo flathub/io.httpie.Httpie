@@ -15,12 +15,6 @@ finish-args:
   # Enable GPU acceleration as the app is very slow otherwise
   - --device=dri
 modules:
-  - name: xrandr
-    sources:
-      - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
-        type: archive
-        url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
-
   - name: httpie
     buildsystem: simple
     sources:
@@ -62,8 +56,13 @@ modules:
 
       # apply_extra runs at the end of the installation process and extracts
       # the app from the appimage file
-      - type: file
-        path: apply_extra.sh
+      - type: script
+        dest_filename: apply_extra
+        commands:
+          - chmod +x httpie.appimage
+          - ./httpie.appimage --appimage-extract
+          - mv squashfs-root httpie
+          - rm httpie.appimage
 
       - type: file
         path: io.httpie.Httpie.desktop
@@ -74,7 +73,7 @@ modules:
       - type: file
         path: io.httpie.Httpie.png
     build-commands:
-      - install -Dm755 ./apply_extra.sh "${FLATPAK_DEST}/bin/apply_extra"
+      - install -Dm755 apply_extra "${FLATPAK_DEST}/bin/apply_extra"
       - install -Dm755 httpie -t "${FLATPAK_DEST}/bin/"
       - install -Dm644 "${FLATPAK_ID}.desktop" -t "${FLATPAK_DEST}/share/applications"
       - install -Dm644 "${FLATPAK_ID}.metainfo.xml" -t "${FLATPAK_DEST}/share/metainfo"
