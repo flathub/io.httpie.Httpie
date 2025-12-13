@@ -1,9 +1,9 @@
 id: io.httpie.Httpie
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '23.08'
+base-version: '25.08'
 command: httpie
 finish-args:
   - --share=network
@@ -15,17 +15,6 @@ finish-args:
   # Enable GPU acceleration as the app is very slow otherwise
   - --device=dri
 modules:
-  # ./httpie.appimage --extract-appimage doesn't work inside of Flatpak,
-  # so unappimage is required
-  - name: unappimage
-    buildsystem: simple
-    build-commands:
-      - make -C squashfs-tools install INSTALL_DIR=/app/bin
-    sources:
-      - type: git
-        url: https://github.com/refi64/unappimage
-        commit: d7f86f2a0d7ec3a69211125207d5f127386b849a
-
   - name: xrandr
     sources:
       - sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
