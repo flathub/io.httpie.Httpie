@@ -15,6 +15,17 @@ finish-args:
   # Enable GPU acceleration as the app is very slow otherwise
   - --device=dri
 modules:
+  - name: unsquashfs
+    buildsystem: simple
+    build-commands:
+     - XZ_SUPPORT=1 make -C squashfs-tools -j ${FLATPAK_BUILDER_N_JOBS} unsquashfs
+     - install -Dpm755 -t "${FLATPAK_DEST}/bin" squashfs-tools/unsquashfs
+    sources:
+      - type: git
+        url: https://github.com/plougher/squashfs-tools.git
+        tag: 4.7.4
+        commit: bad1d213ab6df587d6fa0ef7286180fbf7b86167
+
   - name: httpie
     buildsystem: simple
     sources:
@@ -56,11 +67,18 @@ modules:
 
       # apply_extra runs at the end of the installation process and extracts
       # the app from the appimage file
+      #
+      # ./httpie.appimage --appimage-extract doesn't work inside of the flatpak
+      # sandbox, so the appimage is extracted using unsquashfs with a very hacky
+      # solution taken from here:
+      # https://github.com/drmikecrowe/appimage-extracted-installer/blob/011a04eddb8418a404a99834006a17567bb0e255/appimage-manager.sh#L121-L132
       - type: script
         dest_filename: apply_extra
         commands:
+          - set -euo pipefail
           - chmod +x httpie.appimage
-          - ./httpie.appimage --appimage-extract
+          - "offset=$(grep -aob -- 'hsqs' httpie.appimage | tail -n1 | cut -d: -f1)"
+          - unsquashfs -o $offset httpie.appimage
           - mv squashfs-root httpie
           - rm httpie.appimage
 
